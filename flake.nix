@@ -12,5 +12,19 @@
     ...
   }:
     flake-parts.lib.mkFlake {inherit inputs;} {
+      systems = nixpkgs.lib.systems.flakeExposed;
+
+      perSystem = {
+        pkgs,
+        system,
+        ...
+      }: {
+        packages = import ./pkgs {inherit pkgs;};
+        legacyPackages = pkgs;
+      };
+      flake = {
+        overlays.default = final: prev: import ./pkgs {pkgs = final;};
+        nixosModules = import ./modules;
+      };
     };
 }
