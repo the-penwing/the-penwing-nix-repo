@@ -20,7 +20,6 @@
         ...
       }: {
         packages = import ./pkgs {inherit pkgs;};
-        legacyPackages = pkgs;
       };
       flake = {
         overlays.default = final: prev: import ./pkgs {pkgs = final;};
