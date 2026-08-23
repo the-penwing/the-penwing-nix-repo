@@ -5,8 +5,8 @@
 }: let
   src = fetchgit {
     url = "https://github.com/the-penwing/blackjack-rs.git";
-    rev = "8233d1e39e066df76680aea95eea8d84cafc3c14";
-    sha256 = "sha256-zYsRzYM6wRskJcch4bORWCicHrsTAbowvZmJkHwuL1s=";
+    rev = "e075cfa8f9ee924da021feba238a68f10847c55e";
+    sha256 = "sha256-SmJXz/GTtUBCs/ILFW+9qsp1i9lOKquL6na4eGwkenM=";
   };
 in
   rustPlatform.buildRustPackage {
