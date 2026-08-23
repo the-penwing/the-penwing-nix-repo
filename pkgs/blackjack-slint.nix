@@ -20,8 +20,8 @@
 }: let
   src = fetchgit {
     url = "https://github.com/the-penwing/blackjack-slint.git";
-    rev = "b468ff2547f094fb6e80b64c9307318a6799950b";
-    sha256 = "sha256-eKY9ZRfkeEgJSRkT61D9kmjFvv80UvohhXm9xRIyPa0=";
+    rev = "eec68b7a1a8a306c0ca28b2d14d45d1e0496e31d";
+    sha256 = "sha256-PajXxLY0tIXLtt0wo1AGtlaEnE4p+71g+nC4oawtgHM=";
   };
 
   isDarwin = stdenv.hostPlatform.isDarwin;
@@ -69,7 +69,7 @@ in
     cargoLock = {
       lockFile = "${src}/Cargo.lock";
       outputHashes = {
-        "blackjack-rs-0.1.0" = "sha256-zYsRzYM6wRskJcch4bORWCicHrsTAbowvZmJkHwuL1s=";
+        "blackjack-rs-0.1.0" = "sha256-SmJXz/GTtUBCs/ILFW+9qsp1i9lOKquL6na4eGwkenM=";
       };
     };
 
