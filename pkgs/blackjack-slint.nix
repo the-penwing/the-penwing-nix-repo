@@ -20,8 +20,8 @@
 }: let
   src = fetchgit {
     url = "https://github.com/the-penwing/blackjack-slint.git";
-    rev = "eec68b7a1a8a306c0ca28b2d14d45d1e0496e31d";
-    sha256 = "sha256-PajXxLY0tIXLtt0wo1AGtlaEnE4p+71g+nC4oawtgHM=";
+    rev = "86c7c688b2795edbdb8d9e9a3fd2fc4b09b1a9d2";
+    sha256 = "sha256-xWeU2HMzreyvTDTdnOxNLzh0OVvEfqUwKduKXWmm1II=";
   };
 
   isDarwin = stdenv.hostPlatform.isDarwin;
@@ -66,12 +66,7 @@ in
 
     inherit src;
 
-    cargoLock = {
-      lockFile = "${src}/Cargo.lock";
-      outputHashes = {
-        "blackjack-rs-0.1.0" = "sha256-SmJXz/GTtUBCs/ILFW+9qsp1i9lOKquL6na4eGwkenM=";
-      };
-    };
+    cargoLock.lockFile = "${src}/Cargo.lock";
 
     nativeBuildInputs = [pkg-config makeWrapper];
     buildInputs =
