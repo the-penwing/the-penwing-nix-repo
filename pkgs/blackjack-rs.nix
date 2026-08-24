@@ -1,12 +1,12 @@
 {
   lib,
-  fetchgit,
+  fetchCrate,
   rustPlatform,
 }: let
-  src = fetchgit {
-    url = "https://github.com/the-penwing/blackjack-rs.git";
-    rev = "e075cfa8f9ee924da021feba238a68f10847c55e";
-    sha256 = "sha256-SmJXz/GTtUBCs/ILFW+9qsp1i9lOKquL6na4eGwkenM=";
+  src = fetchCrate {
+    pname = "blackjack-rs";
+    version = "0.1.0";
+    sha256 = "sha256-+K9l1QMMHIg/HVAOdfzfgxAoEDdATW7eYKJsu8fPzxQ=";
   };
 in
   rustPlatform.buildRustPackage {
@@ -15,7 +15,7 @@ in
 
     inherit src;
 
-    cargoLock.lockFile = "${src}/Cargo.lock";
+    cargoHash = "sha256-VOnUiswMJW+lGvUNpngFHcDXO3xQs+DH5ECEijhEz48=";
 
     meta = {
       description = "Blackjack for the terminal - Written in Rust";
