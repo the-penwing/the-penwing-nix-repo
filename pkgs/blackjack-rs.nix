@@ -5,8 +5,8 @@
 }: let
   src = fetchCrate {
     pname = "blackjack-rs";
-    version = "0.1.0";
-    sha256 = "sha256-+K9l1QMMHIg/HVAOdfzfgxAoEDdATW7eYKJsu8fPzxQ=";
+    version = "0.1.1";
+    sha256 = "sha256-bINIvjVqn1CBLIzNY4UVodhO2P8CyvFvXY7VKBZQ4+c=";
   };
 in
   rustPlatform.buildRustPackage {
@@ -15,7 +15,9 @@ in
 
     inherit src;
 
-    cargoHash = "sha256-VOnUiswMJW+lGvUNpngFHcDXO3xQs+DH5ECEijhEz48=";
+    cargoHash = "sha256-bGXXqMEhsLgfX5lACOaaH24X36xKIUoYv1f698cJcbY=";
+    doCheck = false;
+    stripAllList = ["bin"];
 
     meta = {
       description = "Blackjack for the terminal - Written in Rust";
