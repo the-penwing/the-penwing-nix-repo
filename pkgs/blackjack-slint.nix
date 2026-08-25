@@ -10,8 +10,7 @@
   wayland,
   wayland-protocols,
   vulkan-loader,
-  libGL,
-  mesa,
+  libglvnd,
   libx11,
   libxcursor,
   libxi,
@@ -20,8 +19,8 @@
 }: let
   src = fetchgit {
     url = "https://github.com/the-penwing/blackjack-slint.git";
-    rev = "bd1b704d423258a15e77ba6d6697254744e63f21";
-    sha256 = "sha256-1oiwo91DyH3Bpn2dqr9Ixic//qrPt6BFD0eQ29n4/Ao=";
+    rev = "7ccf1b2f34bdc8af95d8a817187ff282ac536033";
+    sha256 = "sha256-cG+YTsUBU2MZmxmFGYPiAwlAh1CsXu4DZyppDjgmaa8=";
   };
 
   isDarwin = stdenv.hostPlatform.isDarwin;
@@ -31,8 +30,7 @@
     wayland
     vulkan-loader
     fontconfig
-    libGL
-    mesa
+    libglvnd
     libx11
     libxcursor
     libxi
@@ -45,8 +43,7 @@
     wayland
     wayland-protocols
     vulkan-loader
-    libGL
-    mesa
+    libglvnd
     libx11
     libxcursor
     libxi
@@ -74,14 +71,18 @@ in
       then darwinBuildInputs
       else linuxBuildInputs;
 
+    doCheck = false;
+    stripAllList = ["bin"];
+
     postInstall = ''
       mkdir -p $out/share/blackjack-slint
       cp -r ${src}/assets $out/share/blackjack-slint/assets
 
       wrapProgram $out/bin/blackjack-slint \
         --set BLACKJACK_ASSETS_DIR $out/share/blackjack-slint/assets \
-        ${lib.optionalString (!isDarwin)
-        "--set LD_LIBRARY_PATH ${lib.makeLibraryPath linuxRuntimeLibs}"}
+        ${lib.optionalString (!isDarwin) ''
+        --prefix LD_LIBRARY_PATH : "${lib.makeLibraryPath linuxRuntimeLibs}:/run/opengl-driver/lib"
+      ''}
     '';
 
     meta = {
