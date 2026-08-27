@@ -5,17 +5,17 @@
 }: let
   src = fetchCrate {
     pname = "blackjack-rs";
-    version = "0.1.1";
-    sha256 = "sha256-bINIvjVqn1CBLIzNY4UVodhO2P8CyvFvXY7VKBZQ4+c=";
+    version = "0.2.0";
+    sha256 = "sha256-zPLSuINkY/1JjlO9cluTlpRRNGv/z4jqMA9szcA5yeo=";
   };
 in
   rustPlatform.buildRustPackage {
     pname = "blackjack-rs";
-    version = "0.1.0";
+    version = "0.2.0";
 
     inherit src;
 
-    cargoHash = "sha256-bGXXqMEhsLgfX5lACOaaH24X36xKIUoYv1f698cJcbY=";
+    cargoHash = "sha256-T8EYtqDqVKHzdV6tT1DLrU3282n9pp1L7dQ64ih3cH4=";
     doCheck = false;
     stripAllList = ["bin"];
 
