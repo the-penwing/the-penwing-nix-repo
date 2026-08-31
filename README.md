@@ -17,7 +17,7 @@ welcome.
 
 Or add it as a flake input to your own config:
 
-    inputs.the-penwing.url = "github:the-penwing/penwing-systems-nix-repo";
+    inputs.the-penwing.url = "github:the-penwing/the-penwing-nix-repo";
 
 then reference `the-penwing.packages.<system>.<name>` or apply
 `the-penwing.overlays.default` to your own `pkgs`.
