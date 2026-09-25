@@ -1,4 +1,4 @@
-# the-penwing-nix-repo
+# nix-repo
 
 A single, central place to get all the software I build via Nix —
 like a personal nixpkgs. Instead of adding a separate flake input for
@@ -12,12 +12,12 @@ welcome.
 
 ## Usage
 
-    nix run github:the-penwing/the-penwing-nix-repo#blackjack-rs
-    nix build github:the-penwing/the-penwing-nix-repo#lua-dungeon-crawler
+    nix run github:the-penwing/nix-repo#blackjack-rs
+    nix build github:the-penwing/nix-repo#lua-dungeon-crawler
 
 Or add it as a flake input to your own config:
 
-    inputs.the-penwing.url = "github:the-penwing/the-penwing-nix-repo";
+    inputs.the-penwing.url = "github:the-penwing/nix-repo";
 
 then reference `the-penwing.packages.<system>.<name>` or apply
 `the-penwing.overlays.default` to your own `pkgs`.
